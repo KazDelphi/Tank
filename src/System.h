@@ -15,6 +15,7 @@
 
 void Console(bool InitOrShutdown); //初始化:是,关闭:否.
 void Locate(int x, int y);
+void LocateWrite(int x, int y, char character);
 #ifdef linux //检查系统.
 void Console(bool InitOrShutdown)
 {
@@ -30,6 +31,13 @@ void Console(bool InitOrShutdown)
 }
 void Locate(int x, int y)
 {
+    move(y, x);
+    refresh();
+}
+void LocateWrite(int x, int y, char character)
+{
+    mvaddch(y, x, character);
+    refresh();
 }
 #elif windows
 void Console(bool InitOrShutdown)
