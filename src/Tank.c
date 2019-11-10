@@ -1,5 +1,5 @@
 #include "System.h"
-#include "Info_define.h"
+#include "GameData.h"
 int main()
 {
     Console(true);

@@ -13,9 +13,9 @@
 #include <stdlib.h>
 
 void Console(bool InitOrShutdown); //初始化:是,关闭:否.
-void Locate(short x, short y);
-void LocateWrite(short x, short y, char character);
-void LocateWriteString(short x, short y, char *string);
+void Locate(short y, short x);
+void LocateWrite(short y, short x, char character);
+void LocateWriteString(short y, short x, char *string);
 #ifdef linux //检查系统.
 void Console(bool InitOrShutdown)
 {
@@ -29,19 +29,19 @@ void Console(bool InitOrShutdown)
         exit(0);
     }
 }
-void Locate(short x, short y)
+void Locate(short y, short x)
 {
     move(y, x);
     refresh();
 }
-void LocateWrite(short x, short y, char character)
+void LocateWrite(short y, short x, char character)
 {
     mvaddch(y, x, character);
     refresh();
 }
-void LocateWriteString(short x, short y, char *string)
+void LocateWriteString(short y, short x, char *string)
 {
-    mvprintw(y, x, string);
+    mvprintw(y, x, "%s", string);
     refresh();
 }
 #elif windows
@@ -55,7 +55,7 @@ void Console(bool InitOrShutdown)
         exit();
     }
 }
-void Locate(short x, short y)
+void Locate(short y, short x)
 {
     //COORD coord;
     //coord.X = x;
