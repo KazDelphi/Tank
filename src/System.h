@@ -22,6 +22,7 @@ void Console(bool InitOrShutdown)
     if (InitOrShutdown)
     {
         initscr();
+        noecho();
     }
     else
     {
